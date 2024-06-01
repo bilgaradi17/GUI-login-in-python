@@ -6,40 +6,40 @@ Welcome to the Tkinter Registration and Login System! This application is built 
 Code Overview
 ### Importing Modules
 First, we import the necessary modules:
-
+```
 from tkinter import *
 import os
-
+```
 from and import: These keywords are used to import specific modules or functions from modules. Here, we import everything (*) from the tkinter module and the os module for file system operations.
 
 
 ### Registration Window
 The register function creates the registration window:
-
-def register():
-    global register_screen
-    register_screen = Toplevel(main_screen)
-    register_screen.title("Register")
-    register_screen.geometry("800x600")   
-    global username
-    global password
-    global username_entry
-    global password_entry
-    username = StringVar()
-    password = StringVar()   
-    Label(register_screen, text="Please enter details below", bg="blue").pack()
-    Label(register_screen, text="").pack()
-    username_label = Label(register_screen, text="Username * ")
-    username_label.pack()
-    username_entry = Entry(register_screen, textvariable=username)
-    username_entry.pack()
-    password_label = Label(register_screen, text="Password * ")
-    password_label.pack()
-    password_entry = Entry(register_screen, textvariable=password, show='*')
-    password_entry.pack()
-    Label(register_screen, text="").pack()
-    Button(register_screen, text="Register", width=10, height=1, bg="blue", command=register_user).pack()
-
+```
+ def register():
+     global register_screen
+     register_screen = Toplevel(main_screen)
+     register_screen.title("Register")
+     register_screen.geometry("800x600")   
+     global username
+     global password
+     global username_entry
+     global password_entry
+     username = StringVar()
+     password = StringVar()   
+     Label(register_screen, text="Please enter details below", bg="blue").pack()
+     Label(register_screen, text="").pack()
+     username_label = Label(register_screen, text="Username * ")
+     username_label.pack()
+     username_entry = Entry(register_screen, textvariable=username)
+     username_entry.pack()
+     password_label = Label(register_screen, text="Password * ")
+     password_label.pack()
+     password_entry = Entry(register_screen, textvariable=password, show='*')
+     password_entry.pack()
+     Label(register_screen, text="").pack()
+     Button(register_screen, text="Register", width=10, height=1, bg="blue", command=register_user).pack()
+```
 def: This keyword is used to define a new function.
 global: Declares variables that can be accessed and modified outside the function.
 Toplevel: Creates a new window that is a child of main_screen.
@@ -50,7 +50,7 @@ pack(): A method to manage the layout of widgets.
 
 ### Login Window
 The login function creates the login window:
-
+```
 def login():
     global login_screen
     login_screen = Toplevel(main_screen)
@@ -73,13 +73,13 @@ def login():
     password_login_entry.pack()
     Label(login_screen, text="").pack()
     Button(login_screen, text="Login", width=10, height=1, command=login_verify).pack()
-    
+  ```  
 command: A parameter that specifies the function to be called when the button is clicked.
 
 
 ### Register User
 The register_user function handles the user registration logic:
-
+```
 def register_user():
     username_info = username.get()
     password_info = password.get()
@@ -90,7 +90,7 @@ def register_user():
     username_entry.delete(0, END)
     password_entry.delete(0, END)
     Label(register_screen, text="Registration Success", fg="green", font=("calibri", 11)).pack()
-    
+ ```   
 open(): A built-in function to open a file.
 write(): A method to write text to a file.
 close(): A method to close a file.
@@ -101,7 +101,7 @@ font: A parameter to set the font style and size.
 
 ### Login Verification
 The login_verify function verifies the login credentials:
-
+```
 def login_verify():
     username1 = username_verify.get()
     password1 = password_verify.get()
@@ -117,7 +117,7 @@ def login_verify():
             password_not_recognised()
     else:
         user_not_found()
-
+```
 if, else: Keywords used for conditional statements.
 os.listdir(): A function to list files in the current directory.
 read(): A method to read the content of a file.
@@ -126,7 +126,7 @@ splitlines(): A method to split the file content into a list of lines.
 
 ### Popup Messages
 We define several functions to display popup messages for different login outcomes:
-
+```
 def login_success():
     global login_success_screen
     login_success_screen = Toplevel(login_screen)
@@ -150,13 +150,13 @@ def user_not_found():
     user_not_found_screen.geometry("400x250")
     Label(user_not_found_screen, text="User Not Found").pack()
     Button(user_not_found_screen, text="OK", command=delete_user_not_found_screen).pack()
-    
+``` 
 These functions create popup windows to inform the user about the success or failure of their login attempt.
 
 
 ### Deleting Popup Screens
 We also define functions to close the popup windows:
-
+```
 def delete_login_success():
     login_success_screen.destroy()
 
@@ -167,10 +167,10 @@ def delete_user_not_found_screen():
     user_not_found_screen.destroy()
 destroy(): A method to close the window.
 
-
+```
 ### Main Window
 Finally, we create the main window of the application:
-
+```
 def main_account_screen():
     global main_screen
     main_screen = Tk()
@@ -183,15 +183,15 @@ def main_account_screen():
     Button(text="Register", height="2", width="30", command=register).pack()
     
     main_screen.mainloop()
-
+```
 Tk(): Initializes the main application window.
 mainloop(): Starts the Tkinter event loop, waiting for user interaction.
 
 
 ### Running the Application
 To run the application, simply execute the script. It will display the main window, allowing you to register a new user or log in with existing credentials.
-
+```
 main_account_screen()
-
+```
 
 Feel free to fork this repository, make improvements, and share your feedback!
